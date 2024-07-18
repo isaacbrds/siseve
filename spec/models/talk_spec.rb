@@ -55,5 +55,10 @@ RSpec.describe Talk, type: :model do
       association = described_class.reflect_on_association(:event)
       expect(association.macro).to eq :belongs_to
     end
+
+    it 'has many speakers' do
+      association = described_class.reflect_on_association(:speakers)
+      expect(association.macro).to eq :has_many
+    end
   end
 end
