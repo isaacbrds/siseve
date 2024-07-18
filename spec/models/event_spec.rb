@@ -74,5 +74,17 @@ RSpec.describe Event, type: :model do
       association = described_class.reflect_on_association(:talks)
       expect(association.macro).to eq :has_many
     end
+
+    it 'has many registrations' do
+      association = described_class.reflect_on_association(:registrations)
+      expect(association.macro).to eq :has_many
+    end
+
+    it 'has many registered_users through registrations' do
+      association = described_class.reflect_on_association(:registered_users)
+      expect(association.macro).to eq :has_many
+      expect(association.options[:through]).to eq :registrations
+      expect(association.options[:source]).to eq :user
+    end
   end
 end
