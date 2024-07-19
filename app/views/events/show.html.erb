@@ -1,0 +1,24 @@
+<h1><%= @event.name %></h1>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @event.local %>
+</p>
+
+<p>
+  <strong>Data de Início:</strong>
+  <%= @event.start_date %>
+</p>
+
+<p>
+  <strong>Data de Fim:</strong>
+  <%= @event.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
