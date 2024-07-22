@@ -1,0 +1,8 @@
+<h1><%= @talk.name %></h1>
+
+<p><%= @talk.description %></p>
+<p>Horário Início: <%= @talk.start_date.strftime("%d/%m/%Y - %H:%M") %></p>
+<p>Horário Fim: <%= @talk.end_date.strftime("%d/%m/%Y - %H:%M") %></p>
+
+<%= link_to 'Edit', edit_event_talk_path(@event, @talk) %> |
+<%= link_to 'Back', event_talks_path %>
