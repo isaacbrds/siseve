@@ -1,0 +1,28 @@
+<h1>Palestras do Evento</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Data e horário do Início</th>
+      <th>Data e horário do Fim</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @talks.each do |talk| %>
+      <tr>
+        <td><%= talk.name %></td>
+        <td><%= talk.description %></td>
+        <td><%= talk.start_date.strftime("%d/%m/%Y - %H:%M") %></td>
+        <td><%= talk.end_date.strftime("%d/%m/%Y - %H:%M") %></td>
+        <td><%= link_to 'Show', event_talk_path(@event ,talk) %></td>
+        <td><%= link_to 'Edit', edit_event_talk_path(@event, talk) %></td>
+        <td><%= link_to 'Destroy', event_talk_path(@event, talk),data: { turbo_confirm: "Are you sure?", "turbo-method": :delete } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Talk', new_event_talk_path %>

@@ -92,7 +92,7 @@ RSpec.describe EventsController, type: :controller do
       it 'returns a success response (i.e., to display the "new" template)' do
         sign_in user
         post :create, params: { event: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -130,7 +130,7 @@ RSpec.describe EventsController, type: :controller do
         event = Event.create!(valid_attributes)
         sign_in user
         put :update, params: { id: event.to_param, event: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end

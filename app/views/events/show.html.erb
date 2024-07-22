@@ -12,12 +12,12 @@
 
 <p>
   <strong>Data de Início:</strong>
-  <%= @event.start_date %>
+  <%= @event.start_date.strftime("%d/%m/%Y") %>
 </p>
 
 <p>
   <strong>Data de Fim:</strong>
-  <%= @event.end_date %>
+  <%= @event.end_date.strftime("%d/%m/%Y") %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
