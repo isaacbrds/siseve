@@ -49,9 +49,13 @@ class TalksController < ApplicationController
     def set_talk
       @talk = @event.talks.find(params[:id])
     end
+
+    def set_speaker
+      @speaker = Speaker.create(user_id: user_id, talk_id: talk_id)
+    end
   
     def talk_params
-      params.require(:talk).permit(:name, :description, :end_date, :start_date)
+      params.require(:talk).permit(:name, :description, :end_date, :start_date, :user_id)
     end
   end
   

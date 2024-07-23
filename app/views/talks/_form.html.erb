@@ -32,6 +32,10 @@
     <%= form.datetime_select :end_date %>
   </div>
   
+  <div class="fields">
+    <%= form.label :user %>
+    <%= form.collection_select :user_id, User.all, :id, :name, prompt: true %>
+  </div>
   <div class="actions">
     <%= form.submit 'Criar Palestra' %>
   </div>
