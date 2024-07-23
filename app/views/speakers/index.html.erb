@@ -1,0 +1,24 @@
+<h1>Palestrantes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Palestra</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @speakers.each do |speaker| %>
+      <tr>
+        <td><%= speaker.user.name %></td>
+        <td><%= speaker.talk.name %></td>
+        <td><%= link_to 'Show', speaker_path(speaker) %></td>
+        <td><%= link_to 'Edit', edit_speaker_path(speaker) %></td>
+        <td><%= link_to 'Destroy', speaker_path(speaker) ,data: { turbo_confirm: "Are you sure?", "turbo-method": :delete } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New speaker', new_speaker_path %>

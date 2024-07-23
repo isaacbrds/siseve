@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :talks
   end
 
-  # root "posts#index"
+  resources :speakers
+  root "events#index"
 end
