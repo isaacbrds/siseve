@@ -4,20 +4,16 @@ require 'rails_helper'
 RSpec.describe SpeakersController, type: :controller do
 
   let(:user) { User.create(email: "test@example.com", password: "password") }
-  let(:event) { Event.create(name: "Evento Teste", description: "Descrição do evento teste", local: "Local do evento", start_date: "2024-07-18 10:00:00", end_date: "2024-07-18 12:00:00") }
-  let(:talk) { Talk.create(name: "Talk Teste", description: "Descrição do talk teste", event_id: event.id, start_date: "2024-07-18 10:00:00", end_date: "2024-07-18 11:00:00")}
   
   let(:valid_attributes) do
     {
-      user_id: user.id,
-      talk_id: talk.id
+      user_id: user.id
     }
   end
 
   let(:invalid_attributes) do
     {
-      user_id: nil,
-      talk_id: nil
+      user_id: nil
     }
   end
 

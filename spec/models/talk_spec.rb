@@ -3,6 +3,12 @@ require 'rails_helper'
 RSpec.describe Talk, type: :model do
   context 'validations' do
     it 'is valid with valid attributes' do
+      user = User.create(
+        name: 'João',
+        email: 'joao@example.com',
+        password: 'password'
+      )
+
       event = Event.create(
         name: 'Ruby Conference',
         description: 'A conference about Ruby',
@@ -10,13 +16,18 @@ RSpec.describe Talk, type: :model do
         start_date: DateTime.new(2024, 7, 20, 9, 0, 0),
         end_date: DateTime.new(2024, 7, 20, 18, 0, 0)
       )
+      
+      speaker = Speaker.create(
+        user: user
+      )
 
       talk = Talk.new(
         name: 'Introduction to Ruby',
         description: 'An introductory talk about Ruby programming language',
         start_date: DateTime.new(2024, 7, 20, 10, 0, 0),
         end_date: DateTime.new(2024, 7, 20, 11, 0, 0),
-        event: event
+        event: event,
+        speaker: speaker
       )
       expect(talk).to be_valid
     end
@@ -57,8 +68,8 @@ RSpec.describe Talk, type: :model do
     end
 
     it 'has many speakers' do
-      association = described_class.reflect_on_association(:speakers)
-      expect(association.macro).to eq :has_many
+      association = described_class.reflect_on_association(:speaker)
+      expect(association.macro).to eq :belongs_to
     end
   end
 end

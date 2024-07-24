@@ -5,7 +5,7 @@ class TalksController < ApplicationController
     before_action :set_talk, only: [:show, :edit, :update, :destroy]
   
     def index
-      @talks = @event.talks
+      @talks = @event.talks.includes(:speaker)
     end
   
     def show
@@ -17,6 +17,9 @@ class TalksController < ApplicationController
   
     def create
       @talk = @event.talks.build(talk_params)
+      set_speaker
+      
+      debugger
       if @talk.save
         redirect_to event_talk_path(@event, @talk), notice: 'Talk foi criado com sucesso.'
       else
@@ -51,7 +54,8 @@ class TalksController < ApplicationController
     end
 
     def set_speaker
-      @speaker = Speaker.create(user_id: user_id, talk_id: talk_id)
+      speaker = Speaker.create(user_id: @talk.user_id)
+      @talk.speaker = speaker
     end
   
     def talk_params

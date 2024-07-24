@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :registrations
+  has_many :registered_events, through: :registrations, source: :event
   has_many :speakers
 end
