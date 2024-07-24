@@ -12,7 +12,6 @@
     <% @speakers.each do |speaker| %>
       <tr>
         <td><%= speaker.user.name %></td>
-        <td><%= speaker.talk.name %></td>
         <td><%= link_to 'Show', speaker_path(speaker) %></td>
         <td><%= link_to 'Edit', edit_speaker_path(speaker) %></td>
         <td><%= link_to 'Destroy', speaker_path(speaker) ,data: { turbo_confirm: "Are you sure?", "turbo-method": :delete } %></td>

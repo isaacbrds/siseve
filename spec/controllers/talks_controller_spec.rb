@@ -3,11 +3,13 @@ require 'rails_helper'
 RSpec.describe TalksController, type: :controller do
   let(:user) { User.create(email: "test@example.com", password: "password") }
   let(:event) { Event.create(name: "Evento Teste", description: "Descrição do evento teste", local: "Local do evento", start_date: "2024-07-18 10:00:00", end_date: "2024-07-18 12:00:00") }
+  let(:speaker){ Speaker.create(user: user) }
   let(:valid_attributes) do
     {
       name: "Talk Teste",
       description: "Descrição do talk teste",
       event_id: event.id,
+      speaker_id: speaker.id,
       start_date: "2024-07-18 10:00:00",
       end_date: "2024-07-18 11:00:00"
     }
@@ -18,6 +20,7 @@ RSpec.describe TalksController, type: :controller do
       name: nil,
       description: nil,
       event_id: nil,
+      speaker_id: nil,
       start_date: nil,
       end_date: nil
     }

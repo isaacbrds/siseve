@@ -45,6 +45,6 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_params
-    params.require(:speaker).permit(:talk_id, :user_id)
+    params.require(:speaker).permit(:user_id)
   end
 end

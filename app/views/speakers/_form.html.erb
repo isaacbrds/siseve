@@ -17,10 +17,6 @@
     <%= form.collection_select :user_id, User.all, :id, :name, prompt: true %>
   </div>
 
-  <div class="fields">
-    <%= form.label :user %>
-    <%= form.collection_select :talk_id, Talk.all, :id, :name, prompt: true %>
-  </div>
   <div class="actions">
     <%= form.submit 'Criar Palestra' %>
   </div>

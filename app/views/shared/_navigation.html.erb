@@ -9,9 +9,10 @@
                 <% if current_user %>
                 <li class="nav-item px-3">
                         <%= link_to "#{t('Events')}", events_path , class: "dropdown-item"%>
+
                 </li>
                 <li class="nav-item">
-                        
+                        <%= link_to "#{t('Speakers')}", speakers_path , class: "dropdown-item"%>
                 </li>
                 <% end %>
                 
